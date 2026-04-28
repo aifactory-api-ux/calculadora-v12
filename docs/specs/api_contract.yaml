@@ -1,0 +1,38 @@
+# API_CONTRACT.md
+
+## POST /api/calculate
+
+| Property         | Value                                                                 |
+|------------------|-----------------------------------------------------------------------|
+| HTTP Method      | POST                                                                  |
+| Path             | /api/calculate                                                        |
+| Auth Required    | No                                                                    |
+| Request Body     | `CalculationRequest`:<br>• operand1: number (required)<br>• operand2: number (required)<br>• operation: "add" \| "subtract" (required) |
+| Response Body    | `CalculationResponse`:<br>• result: number<br>• cached: boolean       |
+| Status Codes     | 200: Calculation successful<br>400: Invalid input<br>500: Internal server error |
+
+---
+
+## GET /api/health
+
+| Property         | Value                                                                 |
+|------------------|-----------------------------------------------------------------------|
+| HTTP Method      | GET                                                                   |
+| Path             | /api/health                                                           |
+| Auth Required    | No                                                                    |
+| Request Body     | None                                                                  |
+| Response Body    | <br>• status: "ok"                                                    |
+| Status Codes     | 200: Service healthy                                                  |
+
+---
+
+## GET /api/logs
+
+| Property         | Value                                                                 |
+|------------------|-----------------------------------------------------------------------|
+| HTTP Method      | GET                                                                   |
+| Path             | /api/logs                                                             |
+| Auth Required    | No                                                                    |
+| Request Body     | None                                                                  |
+| Response Body    | Array of `CalculationLog`:<br>• timestamp: string (ISO 8601)<br>• operand1: number<br>• operand2: number<br>• operation: "add" \| "subtract"<br>• result: number<br>• cached: boolean |
+| Status Codes     | 200: Logs returned                                                    |
